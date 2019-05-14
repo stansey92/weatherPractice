@@ -1,0 +1,10 @@
+.center {
+  margin: auto;
+  width: 50%;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.border {
+  padding: 30px;
+}
