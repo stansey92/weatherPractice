@@ -1,28 +1,33 @@
 import React from 'react'
+import { Button, Form, FormGroup, Label, Input, FormText, Card } from 'reactstrap';
 import './form.css'
 
-class Form extends React.Component {
+class InputForm extends React.Component {
   state = {
     city: '',
   }
 
   onSubmit = (e, input) => {
     e.preventDefault()
+    this.props.showForm()
     this.props.getWeather(this.state.city)
   }
 
   render() {
     return (
-      <div className="center">
-        <form onSubmit={e => this.onSubmit(e, this.state.city)}  className="border">
-          <div className="form-group">
-            <label htmlFor="input">Weather Finder</label>
-            <input onChange={(e) => this.setState({city: e.target.value})} type="text" className="form-control" id="input" aria-describedby="emailHelp" placeholder="Enter city" required/>
-          </div>
-        </form>
+      <div onSubmit={e => this.onSubmit(e, this.state.city)} className="center">
+        <Card>
+          <Form className='form'>
+            <FormGroup>
+              <Label for="city">Where would you like to know the weather?</Label>
+              <Input onChange={(e) => this.setState({city: e.target.value})} type="text" name="city" id="city" placeholder="enter city..." />
+            </FormGroup>
+            <Button color="primary">Submit</Button>
+          </Form>
+        </Card>
       </div>
     )
   }
 }
 
-export default Form
+export default InputForm

@@ -1,10 +1,19 @@
 .center {
-  margin: auto;
-  width: 50%;
-  padding-top: 150px;
-  padding-bottom: 150px;
+  padding-top: 10%;
 }
 
-.border {
+.form {
   padding: 30px;
+}
+
+.weather {
+  .padding-top: 10%;
+}
+
+.weatherIcon {
+  width: 30%
+}
+
+.temp {
+  font-size: 150%;
 }
