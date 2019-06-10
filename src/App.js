@@ -34,7 +34,7 @@ class App extends React.Component {
             <Col xs='12' sm='8'>
             {this.state.showForm ? <InputForm showForm={this.showHideForm} getWeather={this.getWeather}/>  : null}
             {this.state.weatherObj === null ? null : <Weather showForm={this.showHideForm} weather={this.state.weatherObj}/> }
-            {this.state.weatherObj === null ? null : <ItemList /> }
+            {this.state.weatherObj === null ? null : <ItemList temp={this.state.weatherObj.main.temp}/> }
             </Col>
             <Col xs='0' sm='2'></Col>
           </Row>
