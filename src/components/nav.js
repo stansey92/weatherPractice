@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, NavbarBrand } from 'reactstrap'
+import { Navbar, NavbarBrand, Button } from 'reactstrap'
 
 class Nav extends React.Component {
   render() {
@@ -7,6 +7,7 @@ class Nav extends React.Component {
       <div>
       <Navbar color="dark" dark>
         <NavbarBrand href="/" className="mr-auto">Weather Store</NavbarBrand>
+        <Button color="primary">Cart</Button>
       </Navbar>
       </div>
     )

@@ -6,7 +6,7 @@ class Weather extends React.Component {
 
   render() {
     return (
-      <div className='weather'>
+      <div className='mt-3'>
         <Card className='form'>
         <Container>
           <Row>

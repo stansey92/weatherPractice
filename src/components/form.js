@@ -15,7 +15,7 @@ class InputForm extends React.Component {
 
   render() {
     return (
-      <div onSubmit={e => this.onSubmit(e, this.state.city)} className="center">
+      <div onSubmit={e => this.onSubmit(e, this.state.city)} className='mt-3'>
         <Card>
           <Form className='form'>
             <FormGroup>

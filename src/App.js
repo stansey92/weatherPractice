@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import InputForm from './components/form'
 import Weather from './components/weather'
 import Nav from './components/nav'
+import ItemList from './components/itemlist'
 
 class App extends React.Component {
   state = {
@@ -29,15 +30,14 @@ class App extends React.Component {
         <Nav />
         <Container>
           <Row>
-            <Col xs='12' sm='2'>
-            </Col>
+            <Col xs='12' sm='2'></Col>
             <Col xs='12' sm='8'>
             {this.state.showForm ? <InputForm showForm={this.showHideForm} getWeather={this.getWeather}/>  : null}
             {this.state.weatherObj === null ? null : <Weather showForm={this.showHideForm} weather={this.state.weatherObj}/> }
+            {this.state.weatherObj === null ? null : <ItemList /> }
             </Col>
             <Col xs='0' sm='2'></Col>
           </Row>
-
         </Container>
       </div>
     )
