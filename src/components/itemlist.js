@@ -10,7 +10,6 @@ class ItemList extends React.Component {
   async componentDidMount() {
     const response = await fetch(`http://localhost:3001/${this.determineWeatherCat(this.props.temp)}`)
     const json = await response.json()
-    // this.setState({items: [...json]})
     this.setState({items: this.shuffleAndReturnFive(json)})
   }
 
@@ -23,16 +22,23 @@ class ItemList extends React.Component {
   shuffleAndReturnFive = (data) => {
     let result = []
     for (let x = 0; x < 5; x++) {
-    let rand = Math.floor(Math.random() * data.length)
-    result.push(data[rand])
-    data.splice(rand, 1)
+      let rand = Math.floor(Math.random() * data.length)
+      result.push(data[rand])
+      data.splice(rand, 1)
     }
     return result
   }
 
+  onClickItem = (item) => {
+    this.props.addToCart(item)
+    let arr = [...this.state.items]
+    let newArr = arr.filter(i => i !== item)
+    this.setState({items: newArr})
+  }
+
   renderItems = (items) => {
     return items.map(i =>
-      <ListGroupItem tag="button" action>
+      <ListGroupItem key={i.id} tag="button" onClick={() => this.onClickItem(i)}action>
         <Container>
           <Row>
             <Col xs='9'>{i.item}</Col>
@@ -42,7 +48,6 @@ class ItemList extends React.Component {
         </Container>
       </ListGroupItem>)
   }
-
 
 
   render() {
