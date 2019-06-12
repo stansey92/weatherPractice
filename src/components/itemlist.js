@@ -41,9 +41,9 @@ class ItemList extends React.Component {
       <ListGroupItem key={i.id} tag="button" onClick={() => this.onClickItem(i)}action>
         <Container>
           <Row>
-            <Col xs='9'>{i.item}</Col>
-            <Col xs='2'>${i.price}</Col>
-            <Col xs='1'><img src="https://img.icons8.com/ios-glyphs/30/000000/add-shopping-cart.png"/></Col>
+            <Col xs='6'>{i.item}</Col>
+            <Col xs='4'>${i.price}</Col>
+            <Col xs='2'><img src="https://img.icons8.com/ios-glyphs/20/000000/add-shopping-cart.png"/></Col>
           </Row>
         </Container>
       </ListGroupItem>)
@@ -53,7 +53,7 @@ class ItemList extends React.Component {
   render() {
     return (
       <div className='mt-3'>
-        <ListGroup >
+        <ListGroup>
           <ListGroupItem className="font-weight-bold bg-primary text-light">Do you have everything for your adventure?</ListGroupItem>
           {this.renderItems(this.state.items)}
         </ListGroup>
