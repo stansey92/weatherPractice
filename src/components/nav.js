@@ -57,7 +57,7 @@ class Nav extends React.Component {
           </ListGroup>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggleModal}>Do Something</Button>{' '}
+            <Button color="primary" onClick={this.toggleModal}>Purchase</Button>{' '}
             <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
           </ModalFooter>
         </Modal>
