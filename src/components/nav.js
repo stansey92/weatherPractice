@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Navbar, NavbarBrand, Button, Modal, ModalHeader, ModalFooter, ModalBody, ListGroupItem, Col, Row, Container, ListGroup } from 'reactstrap'
 
-class Nav extends React.Component {
-  state = {
-    modal: false
+const Nav = (props) => {
+  const [modal, setModal ] = useState(false)
+
+  const toggleModal = () => {
+    setModal(modal ? false : true)
   }
 
-  toggleModal = () => {
-    this.setState({modal: this.state.modal ? false : true})
-  }
-
-  renderItems = (items) => {
+  const renderItems = (items) => {
     return items.map(i =>
       <ListGroupItem key={i.id}>
         <Container>
@@ -22,11 +20,11 @@ class Nav extends React.Component {
       </ListGroupItem>)
   }
 
-  onClickCart = () => {
-    this.toggleModal()
+  const onClickCart = () => {
+    toggleModal()
   }
 
-  cartTotal = (cart) => {
+  const cartTotal = (cart) => {
     let result = 0
     for (let x = 0; x < cart.length; x++) {
       result+= parseFloat(cart[x].price)
@@ -34,36 +32,34 @@ class Nav extends React.Component {
     return result.toFixed(2)
   }
 
-  render() {
     return (
       <div>
       <Navbar color="dark" dark>
         <NavbarBrand href="/" className="mr-auto">Weather Store</NavbarBrand>
-        <Button color="primary" onClick={() => this.onClickCart()}>Cart</Button>
+        <Button color="primary" onClick={() => onClickCart()}>Cart</Button>
       </Navbar>
-      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Cart:</ModalHeader>
+      <Modal isOpen={modal}>
+          <ModalHeader>Cart:</ModalHeader>
           <ModalBody>
           <ListGroup>
-            {this.renderItems(this.props.cart)}
+            {renderItems(props.cart)}
             <ListGroupItem active>
               <Container>
                 <Row>
                   <Col xs='9'>Total:</Col>
-                  <Col xs='3'>${this.cartTotal(this.props.cart)}</Col>
+                  <Col xs='3'>${cartTotal(props.cart)}</Col>
                 </Row>
               </Container>
             </ListGroupItem>
           </ListGroup>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggleModal}>Purchase</Button>{' '}
-            <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
+            <Button color="primary" onClick={toggleModal}>Purchase</Button>{' '}
+            <Button color="secondary" onClick={toggleModal}>Cancel</Button>
           </ModalFooter>
         </Modal>
       </div>
     )
-  }
 }
 
 export default Nav
